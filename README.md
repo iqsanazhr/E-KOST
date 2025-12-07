@@ -1,64 +1,135 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# E-KOST 🏠
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**E-KOST** adalah platform pencarian kost modern yang menghubungkan pencari kost dengan pemilik kost secara langsung tanpa perantara. Dibangun dengan framework Laravel dan desain antarmuka premium berbasis Tailwind CSS.
 
-## About Laravel
+![E-KOST Hero](https://via.placeholder.com/800x400?text=E-KOST+Platform) _<!-- Ganti dengan screenshot aplikasi jika ada -->_
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Fitur Unggulan
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🌍 Untuk Pencari Kost (User)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   **Pencarian Cerdas**: Cari kost berdasarkan lokasi, harga, dan fasilitas.
+-   **Filter Lengkap**: Saring hasil pencarian sesuai budget dan kebutuhan Anda.
+-   **Detail Lengkap**: Lihat foto, fasilitas, dan deskripsi kost secara rinci.
+-   **Favorit**: Simpan kost impian Anda ke daftar favorit.
+-   **Interaksi**: Berikan komentar atau pertanyaan pada listing kost.
+-   **Hubungi Pemilik**: Dapatkan kontak langsung (WhatsApp) pemilik kost.
 
-## Learning Laravel
+### 🏢 Untuk Pemilik Kost (Owner)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   **Dashboard Manajemen**: Kelola data kost Anda dengan mudah.
+-   **Manajemen Kost**: Tambah, edit, dan hapus listing kost.
+-   **Galeri Foto**: Upload banyak foto untuk menarik peminat.
+-   **Status Verifikasi**: Pantau status persetujuan listing Anda dari admin.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🛡️ Untuk Admin
 
-## Laravel Sponsors
+-   **Verifikasi Listing**: Setujui atau tolak pengajuan kost baru untuk menjaga kualitas platform.
+-   **Manajemen Feedback**: Lihat dan kelola masukan dari pengguna.
+-   **Kontrol Penuh**: Hapus listing atau komentar yang melanggar aturan.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 🎨 Desain & UI/UX
 
-### Premium Partners
+Project ini mengusung tema **"Black & Silver"** yang elegan dan modern:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+-   **Responsive Design**: Tampilan optimal di desktop dan mobile.
+-   **SweetAlert2 Integration**: Notifikasi dan konfirmasi aksi yang interaktif dan cantik.
+-   **Glassmorphism Navbar**: Navigasi modern dengan efek blur.
 
-## Contributing
+## 🛠️ Teknologi yang Digunakan
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   **Backend**: Laravel 10/11 (PHP)
+-   **Frontend**: Blade Templates, Tailwind CSS
+-   **Database**: MySQL
+-   **Assets**: Vite (untuk build assets)
+-   **Icons**: Heroicons / SVG
 
-## Code of Conduct
+## 🚀 Cara Instalasi
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda:
 
-## Security Vulnerabilities
+### Prasyarat
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   PHP >= 8.1
+-   Composer
+-   Node.js & NPM
+-   MySQL
 
-## License
+### Langkah-langkah
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1.  **Clone Repository**
+
+    ```bash
+    git clone https://github.com/iqsanazhr/E-KOST.git
+    cd E-KOST
+    ```
+
+2.  **Install Dependencies**
+
+    ```bash
+    composer install
+    npm install
+    ```
+
+3.  **Konfigurasi Environment**
+    Salin file `.env.example` menjadi `.env`:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Buka file `.env` dan sesuaikan konfigurasi database Anda:
+
+    ```env
+    DB_DATABASE=db_ekost
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+4.  **Generate App Key**
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5.  **Migrasi Database & Seeder**
+    Jalankan migrasi untuk membuat tabel dan mengisi data awal (akun demo):
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+6.  **Jalankan Project**
+    Buka dua terminal terpisah:
+    Terminal 1 (Laravel Server):
+
+    ```bash
+    php artisan serve
+    ```
+
+    Terminal 2 (Vite Build/Dev):
+
+    ```bash
+    npm run dev
+    ```
+
+7.  **Selesai!**
+    Buka browser dan akses `http://127.0.0.1:8000`.
+
+## 🔐 Akun Demo (Seeder)
+
+Gunakan akun berikut untuk mencoba berbagai role:
+
+| Role        | Email               | Password   |
+| ----------- | ------------------- | ---------- |
+| **Admin**   | `admin@example.com` | `password` |
+| **Pemilik** | `owner@example.com` | `password` |
+| **User**    | `user@example.com`  | `password` |
+
+## 🤝 Kontribusi (Contributing)
+
+Silakan fork repository ini dan buat Pull Request jika Anda ingin berkontribusi.
+
+## 📝 Lisensi
+
+[MIT License](LICENSE)
