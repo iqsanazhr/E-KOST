@@ -41,6 +41,7 @@ graph LR
     %% Relationships
     Pencari --- UC_Login
     Pencari --- UC_Register
+    Pencari --- UC_Logout
     Pencari --- UC_Search
     Pencari --- UC_ViewDetail
     Pencari --- UC_Favorite
@@ -49,10 +50,15 @@ graph LR
 
     Owner --- UC_Login
     Owner --- UC_Register
+    Owner --- UC_Logout
+    Owner --- UC_Search
     Owner --- UC_ManageKost
     Owner --- UC_UploadFoto
 
     Admin --- UC_Login
+    Admin --- UC_Register
+    Admin --- UC_Logout
+    Admin --- UC_Search
     Admin --- UC_VerifKost
     Admin --- UC_ViewFeedback
 ```
