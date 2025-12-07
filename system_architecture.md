@@ -7,48 +7,54 @@ This document outlines the system architecture for the E-KOST application, categ
 This diagram illustrates the available actions for each role: **Pencari Kost**, **Owner Kost**, and **Admin**.
 
 ```mermaid
-usecaseDiagram
-    actor "Pencari Kost (Mahasiswa)" as Pencari
-    actor "Owner Kost" as Owner
-    actor "Admin" as Admin
+graph LR
+    subgraph Actors
+        Pencari["Pencari Kost (Mahasiswa)"]:::actor
+        Owner["Owner Kost"]:::actor
+        Admin["Admin"]:::actor
+    end
 
-    package "Authentication" {
-        usecase "Login" as UC_Login
-        usecase "Register" as UC_Register
-        usecase "Logout" as UC_Logout
-    }
+    subgraph Authentication
+        UC_Login([Login])
+        UC_Register([Register])
+        UC_Logout([Logout])
+    end
 
-    package "Kost Management" {
-        usecase "Manajemen Data Kost" as UC_ManageKost
-        usecase "Upload Foto Kost" as UC_UploadFoto
-        usecase "Verifikasi Kost" as UC_VerifKost
-    }
+    subgraph KostManagement [Kost Management]
+        UC_ManageKost([Manajemen Data Kost])
+        UC_UploadFoto([Upload Foto Kost])
+        UC_VerifKost([Verifikasi Kost])
+    end
 
-    package "Search & Interaction" {
-        usecase "Cari Kost" as UC_Search
-        usecase "Lihat Detail Kost" as UC_ViewDetail
-        usecase "Tambah ke Favorit" as UC_Favorite
-        usecase "Beri Komentar" as UC_Comment
-        usecase "Kirim Feedback" as UC_Feedback
-        usecase "Lihat Feedback" as UC_ViewFeedback
-    }
+    subgraph SearchInteraction [Search & Interaction]
+        UC_Search([Cari Kost])
+        UC_ViewDetail([Lihat Detail Kost])
+        UC_Favorite([Tambah ke Favorit])
+        UC_Comment([Beri Komentar])
+        UC_Feedback([Kirim Feedback])
+        UC_ViewFeedback([Lihat Feedback])
+    end
 
-    Pencari -- UC_Login
-    Pencari -- UC_Register
-    Pencari -- UC_Search
-    Pencari -- UC_ViewDetail
-    Pencari -- UC_Favorite
-    Pencari -- UC_Comment
-    Pencari -- UC_Feedback
+    %% Styles
+    classDef actor fill:#f9f,stroke:#333,stroke-width:2px;
 
-    Owner -- UC_Login
-    Owner -- UC_Register
-    Owner -- UC_ManageKost
-    Owner -- UC_UploadFoto
+    %% Relationships
+    Pencari --- UC_Login
+    Pencari --- UC_Register
+    Pencari --- UC_Search
+    Pencari --- UC_ViewDetail
+    Pencari --- UC_Favorite
+    Pencari --- UC_Comment
+    Pencari --- UC_Feedback
 
-    Admin -- UC_Login
-    Admin -- UC_VerifKost
-    Admin -- UC_ViewFeedback
+    Owner --- UC_Login
+    Owner --- UC_Register
+    Owner --- UC_ManageKost
+    Owner --- UC_UploadFoto
+
+    Admin --- UC_Login
+    Admin --- UC_VerifKost
+    Admin --- UC_ViewFeedback
 ```
 
 ## 2. Entity Relationship Diagram (ERD)
