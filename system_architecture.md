@@ -52,6 +52,10 @@ graph LR
     Owner --- UC_Register
     Owner --- UC_Logout
     Owner --- UC_Search
+    Owner --- UC_ViewDetail
+    Owner --- UC_Favorite
+    Owner --- UC_Comment
+    Owner --- UC_Feedback
     Owner --- UC_ManageKost
     Owner --- UC_UploadFoto
 
@@ -59,6 +63,9 @@ graph LR
     Admin --- UC_Register
     Admin --- UC_Logout
     Admin --- UC_Search
+    Admin --- UC_ViewDetail
+    Admin --- UC_Favorite
+    Admin --- UC_Comment
     Admin --- UC_VerifKost
     Admin --- UC_ViewFeedback
 ```
