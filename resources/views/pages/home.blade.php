@@ -2,44 +2,44 @@
 
 @section('content')
 <!-- Hero Section -->
-<div class="relative max-w-7xl mx-auto px-6 pt-12 pb-20 text-center overflow-hidden">
+<div class="relative overflow-hidden" style="padding-top: 3rem; padding-bottom: 5rem; text-align: center;">
     <!-- Canvas Background -->
-    <canvas id="bg-animation" class="absolute top-0 left-0 w-full h-full -z-10"></canvas>
+    <canvas id="bg-animation" class="absolute" style="top: 0; left: 0; width: 100%; height: 100%; z-index: -10;"></canvas>
 
-    <div class="relative z-10">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100/80 backdrop-blur-sm border border-gray-200 text-xs font-medium text-gray-600 mb-8 animate-fade-in-up">
-            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+    <div class="container relative z-10">
+        <div class="inline-flex items-center gap-2" style="background-color: rgba(243, 244, 246, 0.8); backdrop-filter: blur(4px); border: 1px solid #e5e7eb; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 500; color: #4b5563; margin-bottom: 2rem;">
+            <span style="width: 0.5rem; height: 0.5rem; background-color: #22c55e; border-radius: 50%;"></span>
             Puluhan kost baru ditambahkan minggu ini
         </div>
         
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
-            Temukan Kost <br class="hidden md:block" />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500">Tanpa Ribet.</span>
+        <h1 class="font-bold text-gray-900 mb-6" style="font-size: 3rem; line-height: 1.1; letter-spacing: -0.025em;">
+            Temukan Kost <br class="md-block hidden" />
+            <span class="text-gradient">Tanpa Ribet.</span>
         </h1>
         
-        <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p class="text-gray-500 max-w-2xl mx-auto mb-12 text-lg" style="line-height: 1.625;">
             Platform pencarian kost modern dengan pengalaman terbaik. Filter canggih, foto terverifikasi, dan langsung hubungi pemilik.
         </p>
 
         <!-- Search Component -->
         <div class="max-w-3xl mx-auto relative group">
-            <div class="absolute -inset-1 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <form action="{{ route('home') }}" method="GET" class="relative bg-white rounded-xl shadow-xl ring-1 ring-gray-900/5 flex items-center p-2">
-                <div class="flex-1 flex items-center px-4 gap-3">
-                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari lokasi, nama kost, atau area..." class="w-full border-none focus:ring-0 text-gray-900 placeholder-gray-400 text-base bg-transparent">
+            <div class="absolute" style="inset: -4px; background: linear-gradient(to right, #e5e7eb, #f3f4f6, #e5e7eb); border-radius: 1rem; filter: blur(8px); opacity: 0.75; z-index: -1;"></div>
+            <form action="{{ route('home') }}" method="GET" style="position: relative; background-color: white; border-radius: 0.75rem; box-shadow: var(--shadow-xl); border: 1px solid rgba(17, 24, 39, 0.05); display: flex; align-items: center; padding: 0.5rem;">
+                <div style="flex: 1; display: flex; align-items: center; padding: 0 1rem; gap: 0.75rem;">
+                    <svg style="width: 1.25rem; height: 1.25rem; color: #9ca3af;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari lokasi, nama kost, atau area..." style="width: 100%; border: none; font-size: 1rem; color: #111827; background: transparent; outline: none;">
                 </div>
                 
-                <div class="h-8 w-px bg-gray-200 mx-2"></div>
+                <div style="height: 2rem; width: 1px; background-color: #e5e7eb; margin: 0 0.5rem;"></div>
                 
-                <select name="tipe" class="border-none focus:ring-0 text-sm text-gray-600 font-medium bg-transparent cursor-pointer hover:text-black transition-colors">
+                <select name="tipe" style="border: none; font-size: 0.875rem; color: #4b5563; font-weight: 500; background: transparent; cursor: pointer; outline: none;">
                     <option value="">Semua Tipe</option>
                     <option value="putra" {{ request('tipe') == 'putra' ? 'selected' : '' }}>Putra</option>
                     <option value="putri" {{ request('tipe') == 'putri' ? 'selected' : '' }}>Putri</option>
                     <option value="campur" {{ request('tipe') == 'campur' ? 'selected' : '' }}>Campur</option>
                 </select>
 
-                <button type="submit" class="ml-2 bg-black text-white px-6 py-2.5 rounded-lg font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-500/20 text-sm">
+                <button type="submit" class="btn-primary ml-2" style="font-size: 0.875rem;">
                     Cari Kost
                 </button>
             </form>
@@ -152,39 +152,47 @@
 </script>
 
 <!-- Main Content -->
-<div class="max-w-7xl mx-auto px-6 pb-24">
-    <div class="flex flex-col lg:flex-row gap-12">
+<div class="container pb-20">
+    <div class="flex flex-col md-flex lg-flex gap-12" style="gap: 3rem;">
         
         <!-- Sidebar Filters (Sticky) -->
-        <aside class="w-full lg:w-64 flex-shrink-0">
-            <div class="sticky top-28 space-y-8">
-                <div>
-                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Harga</h3>
+        <aside style="width: 100%; flex-shrink: 0;" class="md-block">
+            <div class="sticky-sidebar">
+                
+                <style>
+                    @media (min-width: 1024px) {
+                        aside { width: 16rem !important; }
+                        .flex-col.lg-flex { flex-direction: row; }
+                    }
+                </style>
+                
+                <div class="filter-group">
+                    <h3 class="text-xs font-bold text-gray-400 uppercase mb-4" style="letter-spacing: 0.05em;">Harga</h3>
                     <form action="{{ route('home') }}" method="GET" id="filterForm">
                         <input type="hidden" name="search" value="{{ request('search') }}">
                         <input type="hidden" name="tipe" value="{{ request('tipe') }}">
                         
-                        <div class="space-y-3">
-                            <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="Min Harga" class="w-full bg-transparent border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-black focus:ring-0 transition-colors">
-                            <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="Max Harga" class="w-full bg-transparent border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-black focus:ring-0 transition-colors">
+                        <div class="space-y-3" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="Min Harga" class="filter-input">
+                            <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="Max Harga" class="filter-input">
                         </div>
                 </div>
 
-                <div>
-                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Fasilitas</h3>
-                    <div class="space-y-2">
+                <div class="filter-group">
+                    <h3 class="text-xs font-bold text-gray-400 uppercase mb-4" style="letter-spacing: 0.05em;">Fasilitas</h3>
+                    <div class="space-y-2" style="display: flex; flex-direction: column; gap: 0.5rem;">
                         @foreach($facilities as $facility)
-                            <label class="flex items-center group cursor-pointer">
+                            <label class="flex items-center group cursor-pointer" style="display: flex; align-items: center; cursor: pointer;">
                                 <input type="checkbox" name="facilities[]" value="{{ $facility->id }}" 
                                     {{ in_array($facility->id, request('facilities', [])) ? 'checked' : '' }}
-                                    class="rounded border-gray-300 text-black focus:ring-black transition-all">
-                                <span class="ml-3 text-sm text-gray-600 group-hover:text-black transition-colors">{{ $facility->nama_fasilitas }}</span>
+                                    style="border-radius: 0.25rem; border: 1px solid #d1d5db; width: 1rem; height: 1rem;">
+                                <span class="ml-3 text-sm text-gray-600 transition-colors" style="margin-left: 0.75rem;">{{ $facility->nama_fasilitas }}</span>
                             </label>
                         @endforeach
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-white border border-gray-200 text-gray-900 py-2 rounded-lg hover:border-gray-400 hover:shadow-sm text-sm font-medium transition-all">
+                <button type="submit" class="w-full bg-white text-gray-900 py-2 rounded-lg text-sm font-medium transition-all" style="width: 100%; border: 1px solid #e5e7eb; cursor: pointer;">
                     Terapkan Filter
                 </button>
                 </form>
@@ -192,66 +200,66 @@
         </aside>
 
         <!-- Grid -->
-        <div class="flex-1">
+        <div style="flex: 1;">
             <div class="flex justify-between items-end mb-6">
-                <h2 class="text-xl font-bold text-gray-900">Hasil Pencarian</h2>
+                <h2 class="text-xl font-bold text-gray-900" style="font-size: 1.25rem;">Hasil Pencarian</h2>
                 <span class="text-sm text-gray-500">{{ $kosts->total() }} kost ditemukan</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md-grid-cols-2 xl-grid-cols-3 gap-6">
                 @forelse($kosts as $kost)
-                    <a href="{{ route('kost.show', $kost->id) }}" class="group block bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-gray-200 transition-all duration-300">
-                        <div class="relative aspect-[4/3] bg-gray-100 overflow-hidden">
+                    <a href="{{ route('kost.show', $kost->id) }}" class="group card-hover block bg-white rounded-2xl overflow-hidden" style="display: block; border-radius: 1rem;">
+                        <div class="relative aspect-4-3 bg-gray-100 overflow-hidden">
                             @if($kost->images->count() > 0)
-                                <img src="{{ asset('storage/' . $kost->images->first()->path_foto) }}" alt="{{ $kost->nama_kost }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <img src="{{ asset('storage/' . $kost->images->first()->path_foto) }}" alt="{{ $kost->nama_kost }}" class="w-full h-full object-cover group-hover-scale transition" style="transition: transform 0.5s;">
                             @else
                                 <div class="flex items-center justify-center h-full text-gray-300">
-                                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                    <svg style="width: 3rem; height: 3rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                 </div>
                             @endif
                             
-                            <div class="absolute top-3 right-3">
-                                <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider backdrop-blur-md bg-white/90 border border-white/20 shadow-sm
-                                    {{ $kost->tipe == 'putra' ? 'text-blue-700' : ($kost->tipe == 'putri' ? 'text-pink-700' : 'text-purple-700') }}">
+                            <div class="absolute" style="top: 0.75rem; right: 0.75rem;">
+                                <span style="padding: 0.25rem 0.625rem; border-radius: 0.375rem; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255, 255, 255, 0.2); 
+                                    color: {{ $kost->tipe == 'putra' ? '#1d4ed8' : ($kost->tipe == 'putri' ? '#be185d' : '#7e22ce') }};">
                                     {{ $kost->tipe }}
                                 </span>
                             </div>
                         </div>
                         
-                        <div class="p-5">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1">{{ $kost->nama_kost }}</h3>
+                        <div style="padding: 1.25rem;">
+                            <div class="flex justify-between items-start" style="margin-bottom: 0.5rem;">
+                                <h3 class="font-bold text-gray-900 line-clamp-1" style="font-weight: 600;">{{ $kost->nama_kost }}</h3>
                             </div>
                             
                             <p class="text-sm text-gray-500 mb-4 line-clamp-1 flex items-center gap-1">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <svg style="width: 1rem; height: 1rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                                 {{ $kost->alamat }}
                             </p>
                             
                             <div class="flex items-center gap-2 mb-4 overflow-hidden">
                                 @foreach($kost->facilities->take(3) as $fasilitas)
-                                    <span class="text-[10px] font-medium bg-gray-50 text-gray-600 px-2 py-1 rounded border border-gray-100">{{ $fasilitas->nama_fasilitas }}</span>
+                                    <span style="font-size: 10px; font-weight: 500; background-color: #f9fafb; color: #4b5563; padding: 0.25rem 0.5rem; border-radius: 0.25rem; border: 1px solid #f3f4f6;">{{ $fasilitas->nama_fasilitas }}</span>
                                 @endforeach
                                 @if($kost->facilities->count() > 3)
-                                    <span class="text-[10px] font-medium text-gray-400">+{{ $kost->facilities->count() - 3 }}</span>
+                                    <span style="font-size: 10px; font-weight: 500; color: #9ca3af;">+{{ $kost->facilities->count() - 3 }}</span>
                                 @endif
                             </div>
 
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                            <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f9fafb;">
                                 <div>
                                     <span class="text-xs text-gray-400">Mulai dari</span>
                                     <div class="font-bold text-gray-900">Rp {{ number_format($kost->harga_per_bulan, 0, ',', '.') }}</div>
                                 </div>
-                                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                <div style="width: 2rem; height: 2rem; border-radius: 50%; background-color: #f9fafb; display: flex; align-items: center; justify-content: center; transition: all 0.3s; color: #4b5563;">
+                                    <svg style="width: 1rem; height: 1rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </div>
                             </div>
                         </div>
                     </a>
                 @empty
-                    <div class="col-span-full py-20 text-center">
-                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-4">
-                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <div style="grid-column: 1 / -1; padding: 5rem 0; text-align: center;">
+                        <div style="display: inline-flex; align-items: center; justify-content: center; width: 4rem; height: 4rem; border-radius: 50%; background-color: #f3f4f6; margin-bottom: 1rem;">
+                            <svg style="width: 2rem; height: 2rem; color: #9ca3af;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
                         <h3 class="text-lg font-medium text-gray-900">Tidak ada hasil ditemukan</h3>
                         <p class="text-gray-500 mt-1">Coba ubah kata kunci atau filter pencarian Anda.</p>

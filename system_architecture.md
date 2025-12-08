@@ -7,7 +7,7 @@ This document outlines the system architecture for the E-KOST application, categ
 This diagram illustrates the available actions for each role: **Pencari Kost**, **Owner Kost**, and **Admin**.
 
 ```mermaid
-graph LR
+flowchart LR
     subgraph Actors
         Pencari["Pencari Kost (Mahasiswa)"]:::actor
         Owner["Owner Kost"]:::actor
@@ -81,18 +81,18 @@ erDiagram
         string name
         string email
         string password
-        enum role "mahasiswa, pemilik, admin"
+        enum role "mahasiswa,pemilik,admin"
     }
 
     KOSTS {
         bigint id PK
         bigint user_id FK "Owner"
         string nama_kost
-        enum tipe "putra, putri, campur"
+        enum tipe "putra,putri,campur"
         decimal harga_per_bulan
         text deskripsi
         text alamat
-        enum status_verifikasi "pending, approved, rejected"
+        enum status_verifikasi "pending,approved,rejected"
     }
 
     KOST_IMAGES {

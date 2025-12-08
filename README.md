@@ -1,6 +1,6 @@
 # E-KOST 🏠
 
-**E-KOST** adalah platform pencarian kost modern yang menghubungkan pencari kost dengan pemilik kost secara langsung tanpa perantara. Dibangun dengan framework Laravel dan desain antarmuka premium berbasis Tailwind CSS.
+**E-KOST** adalah platform pencarian kost modern yang menghubungkan pencari kost dengan pemilik kost secara langsung tanpa perantara.
 
 ![E-KOST Hero](https://via.placeholder.com/800x400?text=E-KOST+Platform) _<!-- Ganti dengan screenshot aplikasi jika ada -->_
 
