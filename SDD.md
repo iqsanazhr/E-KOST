@@ -781,4 +781,120 @@ Sistem di-deploy pada arsitektur server berbasis awan (_Cloud VPS_) atau _Shared
 
 ## 13. LAMPIRAN
 
-**(Bagian ini berisi kode SQL Database dan Dokumentasi API jika diperlukan, lihat source code utama)**
+### Lampiran A: Skema Database (SQL Representation)
+
+Berikut adalah representasi SQL dari struktur database yang telah diimplementasikan via Laravel Migrations:
+
+```sql
+-- Tabel Users
+CREATE TABLE users (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('mahasiswa', 'pemilik', 'admin') DEFAULT 'mahasiswa',
+    no_hp VARCHAR(20) NULL,
+    avatar VARCHAR(255) NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+-- Tabel Kosts
+CREATE TABLE kosts (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    nama_kost VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) UNIQUE NOT NULL,
+    tipe ENUM('putra', 'putri', 'campur') NOT NULL,
+    harga_per_bulan DECIMAL(12, 2) NOT NULL,
+    deskripsi TEXT NOT NULL,
+    alamat_lengkap TEXT NOT NULL,
+    kota VARCHAR(255) NOT NULL,
+    provinsi VARCHAR(255) NOT NULL,
+    status_verifikasi ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Tabel Facilities & Kost_Facility (Many-to-Many)
+CREATE TABLE facilities (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nama_fasilitas VARCHAR(255) NOT NULL,
+    icon VARCHAR(255) NULL
+);
+
+CREATE TABLE kost_facility (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    kost_id BIGINT UNSIGNED NOT NULL,
+    facility_id BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (kost_id) REFERENCES kosts(id) ON DELETE CASCADE,
+    FOREIGN KEY (facility_id) REFERENCES facilities(id) ON DELETE CASCADE
+);
+
+-- Tabel Interaksi (Favorites & Comments)
+CREATE TABLE favorites (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    kost_id BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (kost_id) REFERENCES kosts(id) ON DELETE CASCADE
+);
+
+CREATE TABLE comments (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    kost_id BIGINT UNSIGNED NOT NULL,
+    content TEXT NOT NULL,
+    parent_id BIGINT UNSIGNED NULL,
+    FOREIGN KEY (parent_id) REFERENCES comments(id) ON DELETE CASCADE
+);
+```
+
+### Lampiran B: Daftar Route Web (Route List)
+
+Daftar endpoint utama yang tersedia dalam aplikasi:
+
+**Public Routes:**
+
+-   `GET /` : Halaman Utama (Pencarian)
+-   `GET /kost/{id}` : Detail Kost
+-   `GET /fitur` : Info Fitur
+-   `GET /login` & `POST /login` : Autentikasi Masuk
+-   `GET /register` & `POST /register` : Pendaftaran Akun
+
+**Owner Routes (Role: Pemilik):**
+
+-   `GET /owner/kosts` : Dashboard Daftar Kost
+-   `GET /owner/kosts/create` : Form Tambah Kost
+-   `POST /owner/kosts` : Simpan Kost Baru
+-   `GET /owner/kosts/{id}/edit` : Form Edit Kost
+-   `PUT /owner/kosts/{id}` : Update Kost
+-   `DELETE /owner/kosts/{id}` : Hapus Kost
+
+**Admin Routes (Role: Admin):**
+
+-   `GET /admin/verification` : Dashboard Verifikasi
+-   `POST /admin/verification/{id}/approve` : Setujui Kost
+-   `POST /admin/verification/{id}/reject` : Tolak Kost
+
+### Lampiran C: Struktur Direktori Utama
+
+```
+E-KOST/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/    # Logika Bisnis (AuthController, OwnerKostController, dll)
+│   │   └── Middleware/     # Filter Akses (RoleMiddleware)
+│   └── Models/             # Representasi Data (User, Kost, Facility)
+├── database/
+│   ├── migrations/         # Definisi Skema Database
+│   └── seeders/            # Data Awal (Dummy Data)
+├── public/
+│   └── storage/            # File Upload (Foto Kost)
+├── resources/
+│   └── views/              # Antarmuka Pengguna (Blade Templates)
+│       ├── auth/           # View Login/Register
+│       ├── dashboard/      # View Owner & Admin
+│       └── layouts/        # Template Utama
+└── routes/
+    └── web.php             # Definisi URL/Endpoint
+```
