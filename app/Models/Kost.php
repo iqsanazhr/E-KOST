@@ -13,10 +13,13 @@ class Kost extends Model
     protected $fillable = [
         'user_id',
         'nama_kost',
+        'slug',
         'tipe',
         'harga_per_bulan',
         'deskripsi',
-        'alamat',
+        'alamat_lengkap',
+        'kota',
+        'provinsi',
         'status_verifikasi',
     ];
 

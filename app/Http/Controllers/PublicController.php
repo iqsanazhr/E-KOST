@@ -25,7 +25,7 @@ class PublicController extends Controller
 
     public function show($id)
     {
-        $query = Kost::with(['owner', 'images', 'facilities']);
+        $query = Kost::with(['owner', 'images', 'facilities', 'comments.user']);
 
         // Jika user bukan admin (atau guest), hanya tampilkan yang approved
         // Asumsi: Auth::check() && Auth::user()->isAdmin() untuk cek admin

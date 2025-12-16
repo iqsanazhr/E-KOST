@@ -1,0 +1,305 @@
+DOKUMEN DESKRIPSI PERANCANGAN PERANGKAT
+LUNAK
+E-KOST Platform Pencari dan Penyedia Kost
+
+1. PENDAHULUAN
+1.1 Tujuan Dokumen
+Dokumen ini mendeskripsikan perancangan perangkat lunak (Software Design Document) untuk
+Sistem Informasi E-KOST. Dokumen ini berfungsi sebagai panduan teknis
+bagi tim pengembang, pemelihara, dan stakeholder dalam memahami arsitektur, desain sistem,
+dan implementasi perangkat lunak.
+1.2 Ruang Lingkup
+Dokumen ini mencakup: - Deskripsi umum sistem - Arsitektur perangkat lunak - Desain modul-
+modul utama - Deskripsi database - Alur proses bisnis - Interface pengguna - Keamanan dan
+integrasi
+1.3 Definisi dan Akronim
+• E-KOST: Electronic Kost System
+• SKPL: Spesifikasi Kebutuhan Perangkat Lunak
+• Owner: Pemilik properti kost
+• User: Pencari kost
+• UI: User Interface
+• API: Application Programming Interface
+• CRUD: Create, Read, Update, Delete
+• ERD: Entity Relationship Diagram
+1.4 Referensi
+• Persyaratan Fungsional Sistem (Software Requirements Specification)
+• Standar Desain Perangkat Lunak
+• Dokumentasi Framework Laravel
+
+2. DESKRIPSI SISTEM SECARA UMUM
+2.1 Visi dan Misi Sistem
+Visi: Menjadi platform utama pencarian dan pengelolaan kost yang terpercaya, transparan, dan
+efisien di Indonesia.
+Misi: - Menyediakan informasi kost yang akurat dan terverifikasi - Mempermudah pemilik kost
+dalam memasarkan properti secara digital - Menciptakan ekosistem sewa-menyewa yang aman
+dan nyaman
+2.2 Fitur-Fitur Utama Sistem
+1. Modul Pencarian Cerdas: Mencari kost dengan filter lokasi, harga, fasilitas, dan tipe
+2. Modul Manajemen Kost: Owner dapat mengelola data, harga, fasilitas, dan ketersediaan
+3. Modul Galeri Digital: Pengelolaan foto-foto properti berkualitas tinggi
+4. Modul Verifikasi: Sistem validasi listing oleh admin untuk mencegah penipuan
+5. Modul Interaksi: Fitur komentar, diskusi, dan favorit untuk interaksi pengguna
+6. Dashboard Admin: Monitoring listing baru dan feedback pengguna
+2.3 Target Pengguna
+• Mahasiswa / Pencari Kost Umum
+• Pemilik Kost (Owner)
+• Administrator Sistem
+2.4 Lingkungan Operasional
+• Sistem Operasi: Windows, macOS, Linux
+• Browser: Chrome, Firefox, Safari, Edge (versi terbaru)
+• Server: Cloud-based atau On-premise
+• Database: MySQL atau MariaDB
+• Framework: Laravel (PHP)
+
+3. ARSITEKTUR PERANGKAT LUNAK
+3.1 Arsitektur Umum
+┌─────────────────────────────────────────────────┐
+│ Presentation Layer (Frontend)
+│ (Blade Templates, CSS/JS Assets, Admin Panel)
+└──────────────────┬──────────────────────────────┘
+│
+┌──────────────────▼──────────────────────────────┐
+│ Business Logic Layer (Application)
+│ (Controllers, Middleware, Policies, Services)
+└──────────────────┬──────────────────────────────┘
+┌──────────────────▼──────────────────────────────┐
+│ Data Access Layer (Repositories/ORM)
+│ (Eloquent Models, Migrations, Seeders)
+└──────────────────┬──────────────────────────────┘
+│
+┌──────────────────▼──────────────────────────────┐
+│ Database Layer & Storage
+│ (MySQL Database, File Storage for Images)
+└──────────────────────────────────────────────────┘
+3.2 Pola Arsitektur
+• Pattern: Model-View-Controller (MVC)
+• Prinsip: Separation of Concerns, DRY (Don't Repeat Yourself)
+• Desain: Modular dan layered architecture
+3.3 Komponen Utama Sistem
+Komponen Deskripsi
+Frontend Application Interface web responsif menggunakan Blade Template
+Backend Server Logic server menggunakan Laravel Framework
+Database Management System Penyimpanan data relasional menggunakan MySQL
+Authentication Service Manajemen user, role, dan permission (Breeze/Jetstream)
+File Storage Service Penyimpanan foto-foto kost (Local/S3)
+Validation Engine Validasi input data server-side
+
+4. DESAIN DATABASE
+4.1 Entity Relationship Diagram (ERD)
+[Sertakan ERD visual di sini]
+4.2 Deskripsi Entitas Utama
+4.2.1 Tabel Users (Pengguna)
+Tujuan: Menyimpan data pengguna lintas role Atribut Utama: - id (Primary Key) - name
+- email (Unique) - password_hash - role (FK ke Roles/Enum) - created_at - updated_at
+4.2.2 Tabel Kosts (Properti Kost)
+Tujuan: Menyimpan data utama properti kost Atribut Utama: - id (Primary Key) - user_id (FK ke Users) -
+nama_kost - tipe (putra/putri/campur) - harga_per_bulan - deskripsi - alamat -
+status_verifikasi (pending, approved, rejected)
+4.2.3 Tabel Facilities (Fasilitas)
+Tujuan: Master data fasilitas yang tersedia Atribut Utama: - id (Primary Key) - nama_fasilitas
+- icon (string class info)
+4.2.4 Tabel KostImages (Foto Kost)
+Tujuan: Menyimpan path foto-foto kost Atribut Utama: - id (Primary Key) - kost_id (FK) -
+path_foto - is_primary (boolean)
+4.2.5 Tabel Pivot Kost_Facility
+Tujuan: Relasi many-to-many Kost dan Fasilitas Atribut Utama: - id (Primary Key) - kost_id (FK)
+- facility_id (FK)
+4.2.6 Tabel Favorites (Favorit User)
+Tujuan: Mencatat kost yang disukai user Atribut Utama: - id (Primary Key) - user_id (FK) -
+kost_id (FK) - created_at
+4.2.7 Tabel Comments (Komentar)
+Tujuan: Interaksi tanya jawab pada kost Atribut Utama: - id (Primary Key) - user_id (FK) -
+kost_id (FK) - content - parent_id (FK self) - created_at
+4.2.8 Tabel Feedbacks (Umpan Balik)
+Tujuan: Masukan untuk pengelola sistem Atribut Utama: - id (Primary Key) - user_id (FK nullable) -
+content - created_at
+4.3 Relasi Antar Tabel
+• Users (Owner) memiliki banyak Kosts (1:M)
+• Kosts memiliki banyak KostImages (1:M)
+• Kosts memiliki banyak Facilities (M:N)
+• Users memiliki banyak Favorites (1:M)
+• Kosts memiliki banyak Comments (1:M)
+4.4 Normalisasi Database
+• Semua tabel sudah dalam bentuk 3NF (Third Normal Form)
+• Tidak ada redundansi data yang signifikan
+• Integritas referensial dijaga melalui foreign keys
+
+5. DESAIN MODUL
+5.1 Modul Manajemen Kost (Kost Management Module)
+5.1.1 Tujuan Modul
+Memungkinkan pemilik kost untuk mengelola inventaris properti sewaan mereka secara mandiri
+dan efisien.
+5.1.2 Fitur Utama
+• Form wizard input data kost
+• Uploader foto multi-file dengan preview
+• Manajemen fasilitas dengan checkbox
+• Status tracking verifikasi kost
+• Edit dan Hapus kost (Soft delete)
+5.1.3 Alur Proses
+1. Owner login dan mengakses dashboard
+2. Owner memilih menu "Tambah Kost"
+3. Owner mengisi form detail dan upload foto
+4. Sistem memvalidasi input
+5. Sistem menyimpan data dengan status "Pending"
+6. Owner menunggu verifikasi Admin
+5.1.4 Database Tables
+• Kosts
+• KostImages
+• Facilities
+• KostFacility
+
+5.2 Modul Pencarian & Filter (Search Module)
+5.2.1 Tujuan Modul
+Memudahkan pencari kost menemukan hunian yang sesuai dengan kriteria spesifik mereka.
+5.2.2 Fitur Utama
+• Search bar global (Nama kost, Lokasi)
+• Filter harga (Minimum - Maksimum)
+• Filter kategori/tipe (Putra, Putri, Campur)
+• Sorting (Harga terendah/tertinggi)
+• Pagination hasil
+5.2.3 Alur Proses
+1. User memasukkan kata kunci di halaman depan
+2. User menyesuaikan filter di sidebar
+3. Controller memproses query ke database
+4. View me-render daftar kost (Grid View)
+5. User mengklik kartu kost untuk detail
+5.2.4 Database Tables
+• Kosts
+• Facilities
+
+5.3 Modul Verifikasi (Verification Module)
+5.3.1 Tujuan Modul
+Alat kontrol kualitas bagi Admin untuk memastikan data kost valid dan layak tayang.
+5.3.2 Fitur Utama
+• Daftar antrian kost "Pending"
+• Halaman review detail kost
+• Aksi Approve dan Reject
+• Notifikasi status ke Owner (Email/In-app)
+5.3.3 Alur Proses
+1. Admin melihat badge notifikasi kost baru
+2. Admin memeriksa kelengkapan foto dan deskripsi
+3. Admin memberikan keputusan (Approve/Reject)
+4. Database terupdate, status listings berubah
+5. Listing yang diapprove muncul di pencarian publik
+5.3.4 Status Verifikasi
+• Pending: Menunggu review
+• Approved: Tayang publik
+• Rejected: Perlu revisi owner
+5.3.5 Database Tables
+• Kosts
+• Users
+
+5.4 Modul Interaksi (User Interaction Module)
+5.4.1 Tujuan Modul
+Memfasilitasi komunikasi antara pencari dan pemilik serta personalisasi pengalaman pengguna.
+5.4.2 Fitur Utama
+• Tambah/Hapus Favorit
+• Kirim Komentar/Pertanyaan
+• Balas Komentar (Reply)
+• Tombol "Hubungi Owner" (WhatsApp Link)
+5.4.3 Alur Proses
+1. User login untuk akses fitur penuh
+2. User mengklik ikon hati untuk favorit
+3. User menulis pertanyaan di kolom komentar
+4. Sistem menyimpan dan menampilkan komentar
+5. Owner dapat membalas komentar tersebut
+5.4.4 Database Tables
+• Favorites
+• Comments
+
+6. DESAIN USER INTERFACE
+6.1 Prinsip Desain UI
+• Responsif: Layout menyesuaikan desktop, tablet, dan mobile
+• Clean: Penggunaan whitespace yang cukup
+• Intuitif: Navigasi yang mudah dipahami
+6.2 Layout dan Navigasi
+6.2.1 Navigation Structure
+• Navbar: Logo, Links (Home, Sewa Kost), Search, User Dropdown
+• Footer: Copyright, Social Links, About Us
+6.3 Wireframe Halaman Utama
+• Hero Section: Judul besar dan Search Bar
+• Recommendation Section: Grid kartu kost terbaru
+• Features Section: Keunggulan E-KOST
+6.4 Komponen UI Standar
+• Cards: Untuk menampilkan preview kost (Thumbnail, Nama, Harga)
+• Badges: Untuk label tipe kost (Putra/Putri)
+• Alerts: Notifikasi sukses/gagal operasi
+• Modals: Konfirmasi hapus data
+6.5 Color Scheme & Typography
+• Primary Color: Blue/Indigo (Kepercayaan/Profesional)
+• Secondary Color: White/Gray (Bersih)
+• Font: Sans-serif modern (Inter/Roboto)
+
+7. ALUR PROSES BISNIS
+7.1 Alur Pendaftaran Kost
+Owner Register -> Login -> Input Data Kost -> Upload Foto -> Submit -> Pending Verification -> Admin Review -> Approved -> Published.
+7.2 Alur Penyewaan (Informasi)
+User Search -> Filter Result -> View Detail -> Contact Owner (via WA) -> Offline Transaction.
+
+8. KEAMANAN & AUTENTIKASI
+8.1 Authentication
+• Laravel Auth (Session based)
+• Password Hashing (Bcrypt)
+• Email Verification (Optional)
+8.2 Authorization
+• Role-Based Access Control (RBAC) via Middleware
+• Owner Policy: Hanya bisa edit kost milik sendiri
+• Admin Policy: Akses penuh ke dashboard admin
+8.3 Data Security
+• CSRF Protection pada semua form
+• XSS Protection pada output data (Blade escaping)
+• SQL Injection prevention via Eloquent ORM
+8.4 Audit & Logging
+• Logging error standard Laravel
+• Timestamp pada setiap create/update record
+
+9. INTEGRASI SISTEM
+9.1 File Storage Service
+• Integrasi dengan Local Filesystem (storage/app/public)
+• Symlink untuk akses publik aset
+9.2 Database Service
+• Integrasi dengan MySQL Database Server
+9.3 External Links
+• WhatsApp API Link generator untuk kontak owner
+
+10. DEPLOYMENT & MAINTENANCE
+10.1 Environment
+• Local: XAMPP/Laragon
+• Production: Linux VPS / Shared Hosting
+10.2 Deployment Process
+1. Git Clone / Upload Files
+2. Composer Install (Dependencies)
+3. Setup .env file
+4. PHP Artisan Migrate (Database Structure)
+5. PHP Artisan Storage:Link
+10.3 Maintenance
+• Backup database berkala
+• Monitoring error logs
+
+11. GLOSSARY
+Term Definition
+E-KOST Nama aplikasi/platform
+CRUD Operasi data: Create, Read, Update, Delete
+MVC Model View Controller architecture
+Blade Template engine Laravel
+Admin Pengelola sistem
+Owner Penyedia kost
+User Pencari kost
+Listing Data properti kost yang ditampilkan
+
+12. LAMPIRAN
+12.1 Wireframe & Mockups
+[Lihat file desain terpisah]
+12.2 Database Schema
+[Lihat file migrasi Laravel]
+12.3 Approval & Sign-off
+Role Name Signature Date
+Lead Developer
+Project Owner
+Admin E-KOST
+
+Document Control
+Attribute Value
+Document Version 1.0 (Lengkap)
+Last Updated 12 Desember 2025
+Status Approved

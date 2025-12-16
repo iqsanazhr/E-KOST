@@ -1,0 +1,56 @@
+LAPORAN PROYEK E-KOST
+
+1. Latar Belakang
+   Pencarian tempat tinggal sementara atau kost seringkali menjadi tantangan bagi mahasiswa maupun masyarakat umum. Metode konvensional mengharuskan pencari kost untuk melakukan survei langsung dari satu lokasi ke lokasi lain, yang memakan waktu dan tenaga. Di sisi lain, pemilik kost sering mengalami kesulitan dalam memasarkan properti mereka secara luas dan mengelola data ketersediaan kamar secara efisien. "E-KOST" hadir sebagai solusi platform digital modern yang menjembatani kebutuhan antara pencari kost dan pemilik kost secara langsung, tanpa perantara, guna menciptakan ekosistem pencarian kost yang lebih efektif, transparan, dan mudah diakses.
+
+2. Tujuan
+   Tujuan utama dari pengembangan aplikasi E-KOST adalah:
+   a. Mempermudah pencari kost menemukan tempat tinggal yang sesuai dengan preferensi mereka (lokasi, harga, fasilitas) melalui fitur pencarian cerdas.
+   b. Menyediakan platform bagi pemilik kost untuk mempromosikan properti mereka dengan jangkauan yang lebih luas.
+   c. Memberikan informasi yang detail dan transparan mengenai kondisi kost (termasuk foto dan fasilitas) kepada calon penghuni.
+   d. Menyederhanakan proses manajemen data kost bagi pemilik melalui dashboard khusus.
+   e. Menciptakan interaksi langsung yang aman antara pencari dan pemilik kost.
+
+3. Manfaat
+   Aplikasi ini memberikan manfaat bagi berbagai pihak:
+   a. Bagi Pencari Kost (Mahasiswa/Umum):
+      - Menghemat waktu dan biaya survei lokasi.
+      - Mendapatkan informasi akurat dan lengkap (foto, harga, fasilitas) sebelum berkunjung.
+      - Kemudahan menyimpan daftar kost impian (fitur Favorit).
+      - Akses kontak langsung ke pemilik kost.
+
+   b. Bagi Pemilik Kost:
+      - Pemasaran yang lebih efektif dan efisien tanpa biaya iklan mahal.
+      - Kemudahan mengelola data kost (tambah, ubah, hapus) kapan saja.
+      - Meningkatkan potensi keterisian kamar kost.
+
+   c. Bagi Admin/Pengelola Sistem:
+      - Memiliki kontrol terhadap kualitas listing yang tampil di aplikasi melalui proses verifikasi.
+      - Mendapatkan masukan (feedback) dari pengguna untuk pengembangan sistem lebih lanjut.
+
+4. Use Case
+   Berikut adalah daftar fungsionalitas utama berdasarkan peran pengguna dalam sistem:
+
+   A. Aktor: Pencari Kost (Mahasiswa/Umum)
+      1. Melakukan Registrasi dan Login akun.
+      2. Mencari kost dengan filter (lokasi, rentang harga, tipe, fasilitas).
+      3. Melihat detail lengkap kost (deskripsi, galeri foto, peta).
+      4. Menambahkan kost ke daftar Favorit.
+      5. Memberikan komentar atau pertanyaan pada halaman kost.
+      6. Mengirimkan umpan balik (feedback) untuk aplikasi.
+      7. Melihat kontak pemilik kost (misal: WhatsApp) untuk transaksi/tanya jawab lanjut.
+
+   B. Aktor: Owner Kost (Pemilik)
+      1. Melakukan Registrasi dan Login sebagai pemilik.
+      2. Mengakses Dashboard manajemen kost.
+      3. Menambahkan data kost baru (judul, harga, deskripsi, alamat, fasilitas).
+      4. Mengunggah dan mengelola foto-foto kost.
+      5. Mengedit atau menghapus data kost yang sudah ada.
+      6. Melihat status verifikasi kost (Pending, Approved, Rejected).
+
+   C. Aktor: Admin
+      1. Login ke halaman dashboard admin.
+      2. Melihat daftar pengajuan kost baru yang berstatus "Pending".
+      3. Melakukan verifikasi kost (Menyetujui atau Menolak listing).
+      4. Melihat dan mengelola Feedback dari pengguna.
+      5. Menghapus konten (kost/komentar) yang melanggar aturan jika diperlukan.

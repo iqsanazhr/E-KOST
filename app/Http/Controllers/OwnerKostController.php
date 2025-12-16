@@ -30,18 +30,26 @@ class OwnerKostController extends Controller
             'tipe' => 'required|in:putra,putri,campur',
             'harga_per_bulan' => 'required|numeric',
             'deskripsi' => 'required',
-            'alamat' => 'required',
+            'alamat_lengkap' => 'required',
+            'kota' => 'required|string',
+            'provinsi' => 'required|string',
             'facilities' => 'array',
             'images.*' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        $kost = Auth::user()->kosts()->create($request->only([
-            'nama_kost',
-            'tipe',
-            'harga_per_bulan',
-            'deskripsi',
-            'alamat'
-        ]));
+        $slug = \Illuminate\Support\Str::slug($request->nama_kost) . '-' . time();
+
+        $kost = Auth::user()->kosts()->create([
+            'nama_kost' => $request->nama_kost,
+            'slug' => $slug,
+            'tipe' => $request->tipe,
+            'harga_per_bulan' => $request->harga_per_bulan,
+            'deskripsi' => $request->deskripsi,
+            'alamat_lengkap' => $request->alamat_lengkap,
+            'kota' => $request->kota,
+            'provinsi' => $request->provinsi,
+            'status_verifikasi' => 'pending'
+        ]);
 
         if ($request->has('facilities')) {
             $kost->facilities()->sync($request->facilities);
@@ -79,21 +87,22 @@ class OwnerKostController extends Controller
             'tipe' => 'required|in:putra,putri,campur',
             'harga_per_bulan' => 'required|numeric',
             'deskripsi' => 'required',
-            'alamat' => 'required',
+            'alamat_lengkap' => 'required',
+            'kota' => 'required|string',
+            'provinsi' => 'required|string',
             'facilities' => 'array',
             'images.*' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        $kost->update($request->only([
-            'nama_kost',
-            'tipe',
-            'harga_per_bulan',
-            'deskripsi',
-            'alamat'
-        ]));
-
-        // Reset status ke pending jika ada perubahan data sensitif (opsional, tergantung kebijakan)
-        // $kost->update(['status_verifikasi' => 'pending']);
+        $kost->update([
+            'nama_kost' => $request->nama_kost,
+            'tipe' => $request->tipe,
+            'harga_per_bulan' => $request->harga_per_bulan,
+            'deskripsi' => $request->deskripsi,
+            'alamat_lengkap' => $request->alamat_lengkap,
+            'kota' => $request->kota,
+            'provinsi' => $request->provinsi,
+        ]);
 
         if ($request->has('facilities')) {
             $kost->facilities()->sync($request->facilities);

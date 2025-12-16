@@ -28,10 +28,10 @@
                 </div>
 
                 <div>
-                    <label for="phone" class="form-label">Nomor HP / WhatsApp</label>
-                    <input type="text" name="phone" id="phone" class="form-input" placeholder="08123456789"
-                        value="{{ old('phone') }}">
-                    @error('phone')
+                    <label for="no_hp" class="form-label">Nomor HP / WhatsApp</label>
+                    <input type="text" name="no_hp" id="no_hp" class="form-input" placeholder="08123456789"
+                        value="{{ old('no_hp') }}">
+                    @error('no_hp')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>

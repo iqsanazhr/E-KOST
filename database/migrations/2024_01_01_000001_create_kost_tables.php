@@ -12,10 +12,13 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Pemilik
             $table->string('nama_kost');
+            $table->string('slug')->unique();
             $table->enum('tipe', ['putra', 'putri', 'campur']);
             $table->decimal('harga_per_bulan', 12, 2);
             $table->text('deskripsi');
-            $table->text('alamat');
+            $table->text('alamat_lengkap');
+            $table->string('kota');
+            $table->string('provinsi');
             $table->enum('status_verifikasi', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });

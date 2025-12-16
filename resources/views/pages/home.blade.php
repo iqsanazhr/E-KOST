@@ -192,7 +192,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-white text-gray-900 py-2 rounded-lg text-sm font-medium transition-all" style="width: 100%; border: 1px solid #e5e7eb; cursor: pointer;">
+                <button type="submit" class="btn-primary w-full" style="width: 100%;">
                     Terapkan Filter
                 </button>
                 </form>
