@@ -49,6 +49,14 @@ class KostSeeder extends Seeder
                 'alamat' => 'Jl. Melati Indah No. 88, Jakarta Timur',
                 'status_verifikasi' => 'approved',
             ],
+            [
+                'nama_kost' => 'Kost Bayu',
+                'tipe' => 'putra',
+                'harga_per_bulan' => 900000,
+                'deskripsi' => 'Aman dan Nyaman',
+                'alamat' => 'Jl. Stadion Mini Purwokerto No. 10',
+                'status_verifikasi' => 'approved',
+            ],
         ];
 
         foreach ($kosts as $data) {
