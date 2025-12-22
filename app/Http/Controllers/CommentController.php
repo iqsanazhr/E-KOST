@@ -23,8 +23,14 @@ class CommentController extends Controller
         return back()->with('success', 'Komentar berhasil ditambahkan.');
     }
 
-    public function destroy(\App\Models\Comment $comment)
+    public function destroy($id)
     {
+        $comment = \App\Models\Comment::find($id);
+
+        if (!$comment) {
+            return back()->with('error', 'Komentar tidak ditemukan atau sudah dihapus.');
+        }
+
         // Authorize: User owns comment OR User is Admin
         if (auth()->id() != $comment->user_id && !auth()->user()->isAdmin()) {
             abort(403, 'Unauthorized action.');

@@ -107,19 +107,19 @@
                         }
                     </style>
                     <div style="
-                                                                    background: linear-gradient(to right, #f3f4f6, #ffffff);
-                                                                    border-left: 4px solid black;
-                                                                    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-                                                                    padding: 16px;
-                                                                    border-radius: 12px;
-                                                                    display: flex;
-                                                                    align-items: center;
-                                                                    justify-content: space-between;
-                                                                    gap: 12px;
-                                                                    position: relative;
-                                                                    overflow: hidden;
-                                                                    color: #111827;
-                                                                ">
+                                                                                            background: linear-gradient(to right, #f3f4f6, #ffffff);
+                                                                                            border-left: 4px solid black;
+                                                                                            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                                                                                            padding: 16px;
+                                                                                            border-radius: 12px;
+                                                                                            display: flex;
+                                                                                            align-items: center;
+                                                                                            justify-content: space-between;
+                                                                                            gap: 12px;
+                                                                                            position: relative;
+                                                                                            overflow: hidden;
+                                                                                            color: #111827;
+                                                                                        ">
                         <div style="display: flex; align-items: center; gap: 12px; position: relative; z-index: 10;">
                             <div
                                 style="background-color: black; color: white; padding: 6px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -191,7 +191,7 @@
                             <div class="flex flex-col items-end gap-2">
                                 <span
                                     style="padding: 0.375rem 1rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 700; border: 1px solid; 
-                                                                                {{ $kost->tipe == 'putra' ? 'background-color: black; color: white; border-color: black;' : ($kost->tipe == 'putri' ? 'background-color: #fdf2f8; color: #be185d; border-color: #fbcfe8;' : 'background-color: #f3f4f6; color: #1f2937; border-color: #e5e7eb;') }}">
+                                                                                            {{ $kost->tipe == 'putra' ? 'background-color: black; color: white; border-color: black;' : ($kost->tipe == 'putri' ? 'background-color: #fdf2f8; color: #be185d; border-color: #fbcfe8;' : 'background-color: #f3f4f6; color: #1f2937; border-color: #e5e7eb;') }}">
                                     {{ ucfirst($kost->tipe) }}
                                 </span>
                             </div>
@@ -263,7 +263,7 @@
                 <!-- Sticky Sidebar -->
                 <div class="content-sidebar">
                     <div class="sticky-sidebar"
-                        style="position: sticky; top: 7rem; height: calc(100vh - 8rem); display: flex; flex-direction: column; gap: 1.5rem;">
+                        style="position: sticky; top: 7rem; display: flex; flex-direction: column; gap: 1.5rem;">
                         <div class="bg-white rounded-2xl p-6"
                             style="background-color: white; border-radius: 1rem; box-shadow: 0 8px 30px rgb(0 0 0 / 0.12); border: 1px solid #f3f4f6; padding: 1.5rem; flex-shrink: 0;">
                             <div class="mb-6" style="margin-bottom: 1.5rem;">
@@ -349,318 +349,357 @@
                             </div>
                         </div>
 
-                        <!-- Diskusi / Komentar with New Social Media UI -->
-                        <div class="flex-1" style="display: flex; flex-direction: column;">
+                        <!-- Diskusi / Komentar with Global Social Media UI -->
+                        <div style="padding-top: 1rem;">
+                            <!-- Embedded Styles for this section only -->
                             <style>
-                                /* Social Media Comment Styles */
-                                .sm-container {
-                                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                                }
-
-                                .sm-header {
-                                    font-size: 20px;
-                                    font-weight: 800;
+                                .discussion-section {
+                                    font-family: 'Inter', sans-serif;
                                     color: #0f1419;
-                                    margin-bottom: 20px;
+                                    margin-bottom: 3rem;
                                 }
 
-                                .sm-comment-list {
+                                .discussion-header {
+                                    font-size: 1.25rem;
+                                    font-weight: 800;
+                                    margin-bottom: 1.5rem;
                                     display: flex;
-                                    flex-direction: column;
-                                    gap: 16px;
-                                    margin-bottom: 24px;
+                                    align-items: center;
+                                    gap: 0.5rem;
                                 }
 
-                                .sm-comment-item {
+                                .discussion-count {
+                                    font-size: 1rem;
+                                    font-weight: normal;
+                                    color: #536471;
+                                }
+
+                                /* Input Area */
+                                .comment-input-wrapper {
                                     display: flex;
-                                    gap: 12px;
+                                    gap: 1rem;
+                                    margin-bottom: 2rem;
+                                    align-items: flex-start;
                                 }
 
-                                .sm-avatar {
+                                .user-avatar {
                                     width: 40px;
                                     height: 40px;
                                     border-radius: 50%;
-                                    object-fit: cover;
-                                    flex-shrink: 0;
-                                    background-color: #e5e7eb;
+                                    background: linear-gradient(135deg, #1f2937, #000000);
+                                    color: white;
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
-                                    font-weight: bold;
-                                    color: #4b5563;
-                                    font-size: 16px;
+                                    font-weight: 600;
+                                    font-size: 1rem;
+                                    flex-shrink: 0;
                                 }
 
-                                .sm-avatar-small {
-                                    width: 32px;
-                                    height: 32px;
-                                    font-size: 14px;
+                                .input-box-container {
+                                    flex: 1;
+                                    position: relative;
                                 }
 
-                                .sm-content-wrapper {
+                                .modern-input {
+                                    width: 100%;
+                                    border: none;
+                                    border-bottom: 2px solid #eff3f4;
+                                    padding: 0.75rem 0;
+                                    font-size: 1rem;
+                                    outline: none;
+                                    transition: border-color 0.2s;
+                                    background: transparent;
+                                    resize: none;
+                                    min-height: 48px;
+                                    color: #0f1419;
+                                }
+
+                                .modern-input:focus {
+                                    border-bottom-color: #000;
+                                }
+
+                                .input-actions {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    margin-top: 0.5rem;
+                                }
+
+                                .post-btn {
+                                    background-color: #000;
+                                    color: white;
+                                    border: none;
+                                    border-radius: 9999px;
+                                    padding: 0.5rem 1.25rem;
+                                    font-weight: 700;
+                                    font-size: 0.9rem;
+                                    cursor: pointer;
+                                    transition: background 0.2s;
+                                }
+
+                                .post-btn:hover {
+                                    background-color: #272c30;
+                                }
+
+                                .post-btn:disabled {
+                                    background-color: #eff3f4;
+                                    color: #b9cad3;
+                                    cursor: default;
+                                }
+
+                                /* Comment List & Scroll */
+                                .comment-scroll-container {
+                                    max-height: 350px;
+                                    /* Approximate height for 2 comments */
+                                    overflow-y: auto;
+                                    padding-right: 6px;
+                                    scrollbar-width: thin;
+                                    scrollbar-color: #cfd9de transparent;
+                                    border: 1px solid #e5e7eb;
+                                    border-radius: 12px;
+                                    padding: 16px;
+                                    background: #fff;
+                                }
+
+                                .comment-scroll-container::-webkit-scrollbar {
+                                    width: 6px;
+                                }
+
+                                .comment-scroll-container::-webkit-scrollbar-track {
+                                    background: transparent;
+                                }
+
+                                .comment-scroll-container::-webkit-scrollbar-thumb {
+                                    background-color: #d1d5db;
+                                    border-radius: 20px;
+                                }
+
+                                .comment-thread {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 1.5rem;
+                                }
+
+                                .comment-item {
+                                    display: flex;
+                                    gap: 1rem;
+                                    position: relative;
+                                }
+
+                                .comment-content-col {
                                     flex: 1;
                                     min-width: 0;
                                 }
 
-                                .sm-bubble {
-                                    background-color: #f3f4f6;
-                                    border-radius: 18px;
-                                    padding: 10px 16px;
-                                    display: inline-block;
-                                    max-width: 100%;
-                                    position: relative;
-                                }
-
-                                /* Varian Twitter/Insta-like (Tanpa bubble, lebih clean) */
-                                .sm-clean-wrapper {
+                                .comment-header {
                                     display: flex;
-                                    flex-direction: column;
+                                    align-items: baseline;
+                                    gap: 0.5rem;
+                                    margin-bottom: 0.25rem;
                                 }
 
-                                .sm-meta {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 6px;
-                                    margin-bottom: 2px;
-                                }
-
-                                .sm-username {
+                                .comment-author {
                                     font-weight: 700;
+                                    font-size: 0.9rem;
                                     color: #0f1419;
-                                    font-size: 14px;
                                 }
 
-                                .sm-time {
-                                    font-weight: 400;
+                                .comment-meta {
+                                    font-size: 0.85rem;
                                     color: #536471;
-                                    font-size: 13px;
                                 }
 
-                                .sm-text {
+                                .comment-body {
+                                    font-size: 0.9rem;
+                                    line-height: 1.5;
                                     color: #0f1419;
-                                    font-size: 15px;
-                                    line-height: 20px;
                                     white-space: pre-wrap;
-                                    word-wrap: break-word;
+                                    margin-bottom: 0.5rem;
                                 }
 
-                                .sm-actions {
+                                .comment-actions {
                                     display: flex;
-                                    gap: 16px;
-                                    margin-top: 6px;
+                                    gap: 1.5rem;
                                     align-items: center;
                                 }
 
-                                .sm-action-btn {
+                                .action-link {
                                     background: none;
                                     border: none;
                                     padding: 0;
-                                    cursor: pointer;
-                                    font-size: 12px;
-                                    font-weight: 600;
                                     color: #536471;
+                                    font-size: 0.8rem;
+                                    font-weight: 600;
+                                    cursor: pointer;
                                     transition: color 0.2s;
                                 }
 
-                                .sm-action-btn:hover {
-                                    color: #0f1419;
+                                .action-link:hover {
+                                    color: #000;
                                     text-decoration: underline;
                                 }
 
-                                .sm-action-btn.delete {
-                                    color: #ef4444;
+                                .action-link.delete {
+                                    color: #f4212e;
                                 }
 
-                                .sm-action-btn.delete:hover {
-                                    color: #dc2626;
+                                .action-link.delete:hover {
+                                    background-color: rgba(244, 33, 46, 0.1);
+                                    text-decoration: none;
+                                    border-radius: 9999px;
+                                    /* If we want button-like hover, else keep simple */
                                 }
 
-                                .sm-reply-container {
-                                    margin-left: 52px;
-                                    margin-top: 12px;
+                                /* Reply Section */
+                                .reply-thread {
+                                    margin-top: 1rem;
+                                    position: relative;
+                                }
+
+                                /* Vertical line for replies */
+                                .reply-connector {
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    left: -24px;
+                                    /* Adjust based on avatar size */
+                                    width: 2px;
+                                    background-color: #cfd9de;
+                                    border-radius: 99px;
+                                }
+
+                                .reply-item {
+                                    margin-bottom: 1rem;
+                                }
+
+                                /* Empty State */
+                                .empty-state {
+                                    text-align: center;
+                                    padding: 2rem 1rem;
+                                    border-radius: 1rem;
+                                    color: #536471;
                                     display: flex;
                                     flex-direction: column;
-                                    gap: 12px;
-                                }
-
-                                .sm-input-area {
-                                    border-top: 1px solid #eff3f4;
-                                    padding-top: 16px;
-                                    display: flex;
-                                    gap: 12px;
-                                    align-items: flex-start;
-                                }
-
-                                .sm-input {
-                                    width: 100%;
-                                    border: 1px solid #cfd9de;
-                                    border-radius: 20px;
-                                    padding: 12px 16px;
-                                    padding-right: 80px;
-                                    /* Space for button */
-                                    font-size: 15px;
-                                    outline: none;
-                                    transition: all 0.2s;
-                                    resize: none;
-                                    background: white;
-                                    min-height: 48px;
-                                    scrollbar-width: none;
-                                    /* Firefox */
-                                    -ms-overflow-style: none;
-                                    /* IE and Edge */
-                                }
-
-                                .sm-input::-webkit-scrollbar {
-                                    display: none;
-                                    /* Chrome, Safari, Opera */
-                                }
-
-                                .sm-input:focus {
-                                    border-color: #000;
-                                    ring: 1px solid #000;
-                                }
-
-                                .sm-send-btn {
-                                    background-color: #000;
-                                    color: white;
-                                    border: none;
-                                    border-radius: 20px;
-                                    padding: 6px 14px;
-                                    font-weight: 700;
-                                    font-size: 13px;
-                                    cursor: pointer;
-                                    transition: background-color 0.2s;
-                                    display: inline-flex;
-                                    items-center;
-                                    justify-content: center;
-                                }
-
-                                .sm-send-btn:hover {
-                                    background-color: #333;
-                                }
-
-                                .reply-box {
-                                    margin-top: 10px;
-                                    margin-bottom: 10px;
-                                }
-
-                                .hidden {
-                                    display: none;
+                                    align-items: center;
+                                    gap: 0.5rem;
                                 }
                             </style>
 
-                            <div class="sm-container">
-                                <h2 class="sm-header">Diskusi ({{ $kost->comments->count() }})</h2>
+                            <div class="discussion-section">
+                                <h2 class="discussion-header">
+                                    Diskusi <span class="discussion-count">({{ $kost->comments->count() }})</span>
+                                </h2>
 
-                                <!-- Main Input Form (Moved to Top) -->
-                                <div class="sm-input-area" style="margin-bottom: 24px;">
+                                <!-- Input Section -->
+                                <div class="comment-input-wrapper">
                                     @auth
-                                        <div class="sm-avatar">
+                                        <div class="user-avatar">
                                             {{ substr(auth()->user()->name, 0, 1) }}
                                         </div>
-                                        <form action="{{ route('kost.comment.store', $kost->id) }}" method="POST"
-                                            style="flex: 1;">
-                                            @csrf
-                                            <div style="position: relative;">
-                                                <textarea name="content" rows="1" class="sm-input"
-                                                    style="padding-right: 90px; padding-top: 14px; padding-bottom: 14px; min-height: 52px;"
-                                                    placeholder="Tambahkan komentar..." required></textarea>
-                                                <div style="position: absolute; right: 12px; bottom: 10px;">
-                                                    <button type="submit" class="sm-send-btn">Kirim</button>
+                                        <div class="input-box-container">
+                                            <form action="{{ route('kost.comment.store', $kost->id) }}" method="POST">
+                                                @csrf
+                                                <textarea name="content" class="modern-input"
+                                                    placeholder="Tanya sesuatu tentang kost ini..." rows="1" required
+                                                    oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                                <div class="input-actions">
+                                                    <button type="submit" class="post-btn">Kirim</button>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     @else
                                         <div
-                                            style="width: 100%; text-align: center; background-color: #f9fafb; padding: 20px; border-radius: 12px; border: 1px dashed #d1d5db;">
-                                            <p style="color: #4b5563; margin-bottom: 12px; font-size: 14px;">Masuk untuk ikut
-                                                berdiskusi</p>
-                                            <a href="{{ route('login') }}" class="sm-send-btn"
-                                                style="text-decoration: none;">Login Sekarang</a>
+                                            class="w-full bg-gray-50 rounded-xl p-6 text-center border border-dashed border-gray-300">
+                                            <p class="text-gray-600 mb-3">Login untuk mulai berdiskusi dengan pemilik kost</p>
+                                            <a href="{{ route('login') }}"
+                                                class="inline-block bg-black text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-gray-800 transition">
+                                                Masuk Akun
+                                            </a>
                                         </div>
                                     @endauth
                                 </div>
 
-                                <div class="sm-comment-list"
-                                    style="border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; background-color: #fff; height: 250px; overflow-y: auto; margin-bottom: 100px;">
-                                    @forelse($kost->comments->whereNull('parent_id') as $comment)
-                                        <div class="sm-comment-item" style="margin-bottom: 24px;">
-                                            <!-- Avatar -->
-                                            <div class="sm-avatar">
-                                                {{ substr($comment->user->name, 0, 1) }}
-                                            </div>
-
-                                            <div class="sm-content-wrapper">
-                                                <!-- Main Comment -->
-                                                <div class="sm-clean-wrapper">
-                                                    <div class="sm-meta" style="flex-wrap: nowrap; min-width: 0;">
-                                                        <span class="sm-username"
-                                                            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $comment->user->name }}</span>
-                                                        <span class="sm-time" style="white-space: nowrap; flex-shrink: 0;">·
+                                <!-- Comment List (Scrollable Box) -->
+                                <div class="comment-scroll-container">
+                                    <div class="comment-thread">
+                                        @forelse($kost->comments->whereNull('parent_id') as $comment)
+                                            <div class="comment-item">
+                                                <div class="user-avatar" style="background: #eef2ff; color: #111827;">
+                                                    {{ substr($comment->user->name, 0, 1) }}
+                                                </div>
+                                                <div class="comment-content-col">
+                                                    <div class="comment-header">
+                                                        <span class="comment-author">{{ $comment->user->name }}</span>
+                                                        <span class="comment-meta">·
                                                             {{ $comment->created_at->diffForHumans() }}</span>
                                                     </div>
-                                                    <div class="sm-text">{{ $comment->content }}</div>
+                                                    <div class="comment-body">{{ $comment->content }}</div>
 
-                                                    <div class="sm-actions">
+                                                    <div class="comment-actions">
                                                         @auth
-                                                            <button
-                                                                onclick="document.getElementById('reply-form-{{ $comment->id }}').classList.toggle('hidden')"
-                                                                class="sm-action-btn">
+                                                            <button class="action-link"
+                                                                onclick="document.getElementById('reply-form-{{ $comment->id }}').classList.toggle('hidden')">
                                                                 Balas
                                                             </button>
-
                                                             @if(auth()->id() == $comment->user_id || auth()->user()->role == 'admin')
                                                                 <form id="delete-form-{{ $comment->id }}"
-                                                                    action="{{ route('comments.destroy', $comment->id) }}"
-                                                                    method="POST">
+                                                                    action="{{ route('comments.destroy', $comment->id) }}" method="POST"
+                                                                    class="inline">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button type="button"
                                                                         onclick="confirmDelete(event, 'delete-form-{{ $comment->id }}')"
-                                                                        class="sm-action-btn delete">Hapus</button>
+                                                                        class="action-link delete">Hapus</button>
                                                                 </form>
                                                             @endif
                                                         @endauth
                                                     </div>
-                                                </div>
 
-                                                <!-- Reply Form -->
-                                                @auth
-                                                    <form id="reply-form-{{ $comment->id }}"
-                                                        action="{{ route('kost.comment.store', $kost->id) }}" method="POST"
-                                                        class="hidden reply-box">
-                                                        @csrf
-                                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                                                        <div style="display: flex; gap: 8px; align-items: flex-start;">
-                                                            <textarea name="content" rows="1" class="sm-input"
-                                                                style="font-size: 14px; min-height: 38px; padding: 8px 12px; background-color: #f9fafb;"
-                                                                placeholder="Tulis balasanmu..." required></textarea>
-                                                            <button type="submit" class="sm-send-btn"
-                                                                style="padding: 6px 14px; font-size: 13px;">Kirim</button>
-                                                        </div>
-                                                    </form>
-                                                @endauth
-
-                                                <!-- Replies List -->
-                                                @if($comment->replies->count() > 0)
-                                                    <div class="sm-reply-container">
-                                                        @foreach($comment->replies as $index => $reply)
-                                                            <div
-                                                                class="sm-comment-item {{ $index >= 2 ? 'hidden reply-hidden-' . $comment->id : '' }}">
-                                                                <div class="sm-avatar sm-avatar-small">
-                                                                    {{ substr($reply->user->name, 0, 1) }}
+                                                    <!-- Reply Input -->
+                                                    @auth
+                                                        <div id="reply-form-{{ $comment->id }}" class="hidden mt-4">
+                                                            <form action="{{ route('kost.comment.store', $kost->id) }}"
+                                                                method="POST" class="flex gap-3 items-start">
+                                                                @csrf
+                                                                <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                                                                <div class="user-avatar"
+                                                                    style="width: 32px; height: 32px; font-size: 0.8rem;">
+                                                                    {{ substr(auth()->user()->name, 0, 1) }}
                                                                 </div>
-                                                                <div class="sm-content-wrapper">
-                                                                    <div class="sm-clean-wrapper">
-                                                                        <div class="sm-meta" style="flex-wrap: nowrap; min-width: 0;">
-                                                                            <span class="sm-username"
-                                                                                style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $reply->user->name }}</span>
-                                                                            <span class="sm-time"
-                                                                                style="white-space: nowrap; flex-shrink: 0;">·
+                                                                <div class="flex-1">
+                                                                    <textarea name="content" class="modern-input"
+                                                                        style="font-size: 0.9rem; padding: 0.5rem 0; min-height: 2.5rem;"
+                                                                        placeholder="Balas komentar ini..." rows="1"
+                                                                        required></textarea>
+                                                                    <div class="flex justify-end mt-2">
+                                                                        <button type="submit" class="post-btn"
+                                                                            style="padding: 0.4rem 1rem; font-size: 0.8rem;">Kirim
+                                                                            Balasan</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    @endauth
+
+                                                    <!-- Nested Replies -->
+                                                    @if($comment->replies->count() > 0)
+                                                        <div class="reply-thread">
+                                                            <!-- Defines the connector line relative to parent avatar -->
+                                                            <!-- Simplified threading lookup -->
+                                                            @foreach($comment->replies as $reply)
+                                                                <div class="comment-item reply-item">
+                                                                    <div class="user-avatar"
+                                                                        style="width: 32px; height: 32px; font-size: 0.8rem; background: #f3f4f6; color: #374151;">
+                                                                        {{ substr($reply->user->name, 0, 1) }}
+                                                                    </div>
+                                                                    <div class="comment-content-col">
+                                                                        <div class="comment-header">
+                                                                            <span class="comment-author">{{ $reply->user->name }}</span>
+                                                                            <span class="comment-meta">·
                                                                                 {{ $reply->created_at->diffForHumans() }}</span>
                                                                         </div>
-                                                                        <div class="sm-text">{{ $reply->content }}</div>
-                                                                        <div class="sm-actions">
+                                                                        <div class="comment-body">{{ $reply->content }}</div>
+                                                                        <div class="comment-actions">
                                                                             @auth
                                                                                 @if(auth()->id() == $reply->user_id || auth()->user()->role == 'admin')
                                                                                     <form id="delete-form-{{ $reply->id }}"
@@ -670,32 +709,29 @@
                                                                                         @method('DELETE')
                                                                                         <button type="button"
                                                                                             onclick="confirmDelete(event, 'delete-form-{{ $reply->id }}')"
-                                                                                            class="sm-action-btn delete">Hapus</button>
+                                                                                            class="action-link delete">Hapus</button>
                                                                                     </form>
                                                                                 @endif
                                                                             @endauth
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        @endforeach
-
-                                                        @if($comment->replies->count() > 2)
-                                                            <button onclick="toggleReplies({{ $comment->id }}, this)"
-                                                                class="sm-action-btn"
-                                                                style="margin-top: 8px; color: #6b7280; font-size: 13px; font-weight: 600;">
-                                                                Lihat {{ $comment->replies->count() - 2 }} balasan lainnya...
-                                                            </button>
-                                                        @endif
-                                                    </div>
-                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
-                                    @empty
-                                        <div style="text-align: center; color: #6b7280; padding: 20px;">
-                                            Belum ada diskusi. Jadilah yang pertama berkomentar!
-                                        </div>
-                                    @endforelse
+                                        @empty
+                                            <div class="empty-state">
+                                                <div
+                                                    class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center mb-2 text-xl">
+                                                    💬
+                                                </div>
+                                                <p class="font-medium text-gray-900 text-sm">Belum ada diskusi</p>
+                                                <p class="text-xs">Jadilah yang pertama diskusi!</p>
+                                            </div>
+                                        @endforelse
+                                    </div>
                                 </div>
                             </div>
                         </div>
