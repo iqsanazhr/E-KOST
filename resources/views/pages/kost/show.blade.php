@@ -107,19 +107,19 @@
                         }
                     </style>
                     <div style="
-                                                                                            background: linear-gradient(to right, #f3f4f6, #ffffff);
-                                                                                            border-left: 4px solid black;
-                                                                                            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-                                                                                            padding: 16px;
-                                                                                            border-radius: 12px;
-                                                                                            display: flex;
-                                                                                            align-items: center;
-                                                                                            justify-content: space-between;
-                                                                                            gap: 12px;
-                                                                                            position: relative;
-                                                                                            overflow: hidden;
-                                                                                            color: #111827;
-                                                                                        ">
+                                                                                                    background: linear-gradient(to right, #f3f4f6, #ffffff);
+                                                                                                    border-left: 4px solid black;
+                                                                                                    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                                                                                                    padding: 16px;
+                                                                                                    border-radius: 12px;
+                                                                                                    display: flex;
+                                                                                                    align-items: center;
+                                                                                                    justify-content: space-between;
+                                                                                                    gap: 12px;
+                                                                                                    position: relative;
+                                                                                                    overflow: hidden;
+                                                                                                    color: #111827;
+                                                                                                ">
                         <div style="display: flex; align-items: center; gap: 12px; position: relative; z-index: 10;">
                             <div
                                 style="background-color: black; color: white; padding: 6px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -185,13 +185,13 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
-                                    <span>{{ $kost->alamat }}</span>
+                                    <span>{{ $kost->alamat_lengkap }}</span>
                                 </div>
                             </div>
                             <div class="flex flex-col items-end gap-2">
                                 <span
                                     style="padding: 0.375rem 1rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 700; border: 1px solid; 
-                                                                                            {{ $kost->tipe == 'putra' ? 'background-color: black; color: white; border-color: black;' : ($kost->tipe == 'putri' ? 'background-color: #fdf2f8; color: #be185d; border-color: #fbcfe8;' : 'background-color: #f3f4f6; color: #1f2937; border-color: #e5e7eb;') }}">
+                                                                                                {{ $kost->tipe == 'putra' ? 'background-color: black; color: white; border-color: black;' : ($kost->tipe == 'putri' ? 'background-color: #fdf2f8; color: #be185d; border-color: #fbcfe8;' : 'background-color: #f3f4f6; color: #1f2937; border-color: #e5e7eb;') }}">
                                     {{ ucfirst($kost->tipe) }}
                                 </span>
                             </div>

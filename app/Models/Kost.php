@@ -56,7 +56,7 @@ class Kost extends Model
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query->where('nama_kost', 'like', '%' . $search . '%')
-                ->orWhere('alamat', 'like', '%' . $search . '%');
+                ->orWhere('alamat_lengkap', 'like', '%' . $search . '%');
         });
 
         $query->when($filters['tipe'] ?? false, function ($query, $tipe) {
